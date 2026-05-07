@@ -1,29 +1,29 @@
 'use strict';
 require('dotenv').config();
 
-const express      = require('express');
+const express = require('express');
 const cookieParser = require('cookie-parser');
-const logger       = require('./utils/logger');
+const logger = require('./utils/logger');
 const { runMigrations, seedAdmin } = require('./config/database');
 const { corsOptions, helmetConfig, apiLimiter, cors } = require('./middleware/security');
 
-const authRouter       = require('./routes/auth');
-const productsRouter   = require('./routes/products');
+const authRouter = require('./routes/auth');
+const productsRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
-const offersRouter     = require('./routes/offers');
+const offersRouter = require('./routes/offers');
 const heroSlidesRouter = require('./routes/heroSlides');
-const uploadRouter     = require('./routes/upload');
-const auditLogRouter   = require('./routes/auditLog');
-const reviewsRouter    = require('./routes/reviews');
-const contactRouter    = require('./routes/contact');
-const ordersRouter     = require('./routes/orders');
-const homeRouter       = require('./routes/home');
+const uploadRouter = require('./routes/upload');
+const auditLogRouter = require('./routes/auditLog');
+const reviewsRouter = require('./routes/reviews');
+const contactRouter = require('./routes/contact');
+const ordersRouter = require('./routes/orders');
+const homeRouter = require('./routes/home');
 const productSizesRouter = require('./routes/productSizes');
 
-const app  = express();
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-// ── Security middlewareddddds ────────────────────────────────────────────────────────
+// ── Security middleware ────────────────────────────────────────────────────────
 app.set('trust proxy', 1);
 app.use(helmetConfig);
 app.use(cors(corsOptions));
@@ -41,18 +41,18 @@ app.use((req, _res, next) => {
 });
 
 // ── Routes ────────────────────────────────────────────────────────────────────
-app.use('/api/auth',        authRouter);
-app.use('/api/products',    productsRouter);
-app.use('/api/categories',  categoriesRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/products', productsRouter);
+app.use('/api/categories', categoriesRouter);
 app.use('/api/hero-slides', heroSlidesRouter);
-app.use('/api/upload',      uploadRouter);
-app.use('/api/audit-log',   auditLogRouter);
-app.use('/api/reviews',     reviewsRouter);
-app.use('/api/contact',     contactRouter);
-app.use('/api/orders',      ordersRouter);
-app.use('/api/home',          homeRouter);
+app.use('/api/upload', uploadRouter);
+app.use('/api/audit-log', auditLogRouter);
+app.use('/api/reviews', reviewsRouter);
+app.use('/api/contact', contactRouter);
+app.use('/api/orders', ordersRouter);
+app.use('/api/home', homeRouter);
 app.use('/api/product-sizes', productSizesRouter);
-app.use('/api',               offersRouter);
+app.use('/api', offersRouter);
 
 // ── Health check ──────────────────────────────────────────────────────────────
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', ts: new Date().toISOString() }));
@@ -94,4 +94,4 @@ module.exports = app;
 
 // ── Graceful shutdown ─────────────────────────────────────────────────────────
 process.on('SIGTERM', () => { logger.info('SIGTERM received, shutting down'); process.exit(0); });
-process.on('SIGINT',  () => { logger.info('SIGINT received, shutting down');  process.exit(0); });
+process.on('SIGINT', () => { logger.info('SIGINT received, shutting down'); process.exit(0); });
