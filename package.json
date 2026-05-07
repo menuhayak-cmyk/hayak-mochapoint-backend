@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Cafe Menu Admin API — Express + PostgreSQL",
   "main": "index.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "node index.js",
     "start:prod": "NODE_ENV=production node dist/index.js",

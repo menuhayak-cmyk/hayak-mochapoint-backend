@@ -86,7 +86,9 @@ async function boot() {
   }
 }
 
-boot();
+boot().catch(err => {
+  logger.error('Critical boot failure during initialization', { err: err.message });
+});
 
 module.exports = app;
 
