@@ -29,11 +29,11 @@ router.get('/offers/admin/all', verifyToken, async (req, res) => {
 });
 
 router.post('/offers', verifyToken, validate(offerSchema), async (req, res) => {
-  const { image_url, alt_text, sort_order, is_active } = req.body;
+  const { image_url, alt_text, alt_text_tr, sort_order, is_active } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO offers (image_url, alt_text, sort_order, is_active) VALUES ($1,$2,$3,$4) RETURNING *',
-      [image_url, alt_text, sort_order ?? 0, is_active ?? true]
+      'INSERT INTO offers (image_url, alt_text, alt_text_tr, sort_order, is_active) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+      [image_url, alt_text, alt_text_tr, sort_order ?? 0, is_active ?? true]
     );
     await auditLog(req.user.email, 'OFFER_CREATE', 'offers', result.rows[0].id, req.ip);
     return res.status(201).json({ data: result.rows[0] });
@@ -45,11 +45,11 @@ router.post('/offers', verifyToken, validate(offerSchema), async (req, res) => {
 router.put('/offers/:id', verifyToken, validate(offerSchema), async (req, res) => {
   const id = parseInt(req.params.id);
   if (isNaN(id)) return res.status(400).json({ error: 'Invalid ID' });
-  const { image_url, alt_text, sort_order, is_active } = req.body;
+  const { image_url, alt_text, alt_text_tr, sort_order, is_active } = req.body;
   try {
     const result = await pool.query(
-      'UPDATE offers SET image_url=$1, alt_text=$2, sort_order=$3, is_active=$4 WHERE id=$5 RETURNING *',
-      [image_url, alt_text, sort_order, is_active, id]
+      'UPDATE offers SET image_url=$1, alt_text=$2, alt_text_tr=$3, sort_order=$4, is_active=$5 WHERE id=$6 RETURNING *',
+      [image_url, alt_text, alt_text_tr, sort_order, is_active, id]
     );
     if (!result.rows[0]) return res.status(404).json({ error: 'Offer not found' });
     await auditLog(req.user.email, 'OFFER_UPDATE', 'offers', id, req.ip);

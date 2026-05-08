@@ -13,7 +13,6 @@ const otpSchema = z.object({
 
 const productSchema = z.object({
   name_ar: z.string().min(1).max(200).trim(),
-  name_en: z.string().max(200).trim().optional().nullable(),
   name_tr: z.string().max(200).trim().optional().nullable(),
   price: z.number({ coerce: true }).positive().max(999999),
   category_id: z.number({ coerce: true }).int().positive().optional().nullable(),
@@ -46,6 +45,7 @@ const categorySchema = z.object({
 const offerSchema = z.object({
   image_url: z.string().url('Must be a valid URL').max(500),
   alt_text: z.string().max(200).optional().nullable(),
+  alt_text_tr: z.string().max(200).optional().nullable(),
   sort_order: z.number({ coerce: true }).int().optional().default(0),
   is_active: z.boolean().optional().default(true),
 });

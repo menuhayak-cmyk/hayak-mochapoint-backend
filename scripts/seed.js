@@ -12,19 +12,19 @@ const categories = [
 ];
 
 const products = [
-  { name_ar: 'أمريكانو',          name_en: 'Americano',       price: 9.99,  cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، ماء ساخن',                      badge: 'القهوة',            is_featured: true  },
-  { name_ar: 'لاتيه',             name_en: 'Latte',           price: 11.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، حليب مبخر، رغوة حليب',          badge: 'القهوة',            is_featured: true  },
-  { name_ar: 'موكا',              name_en: 'Mocha',           price: 12.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، شوكولاتة، حليب، كريمة',          badge: 'القهوة',            is_featured: false },
-  { name_ar: 'كابتشينو',          name_en: 'Cappuccino',      price: 10.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، حليب، رغوة حليب كثيفة',          badge: 'القهوة',            is_featured: true  },
-  { name_ar: 'إسبريسو',           name_en: 'Espresso',        price: 7.99,  cat: 'القهوة',           image_url: null, ingredients: 'قهوة محمصة، ماء',                          badge: 'القهوة',            is_featured: false },
-  { name_ar: 'تركي',              name_en: 'Turkish Coffee',  price: 6.99,  cat: 'القهوة',           image_url: null, ingredients: 'قهوة تركية مطحونة، ماء، سكر (اختياري)',   badge: 'القهوة',            is_featured: false },
-  { name_ar: 'موكا بالكراميل',    name_en: 'Mocha Caramel',   price: 9.99,  cat: 'المشروبات الباردة', image_url: null, ingredients: 'إسبريسو، شوكولاتة، كراميل، حليب بارد، ثلج', badge: 'المشروبات الباردة', is_featured: true  },
-  { name_ar: 'فرابتشينو',         name_en: 'Frappuccino',     price: 11.99, cat: 'المشروبات الباردة', image_url: null, ingredients: 'قهوة، حليب، ثلج، سكر، كريمة',              badge: 'المشروبات الباردة', is_featured: true  },
-  { name_ar: 'عصير برتقال',       name_en: 'Orange Juice',    price: 10.99, cat: 'العصائر',           image_url: null, ingredients: 'برتقال طازج',                              badge: 'العصائر',           is_featured: true  },
-  { name_ar: 'ليموناضة',          name_en: 'Lemonade',        price: 7.99,  cat: 'العصائر',           image_url: null, ingredients: 'ليمون طازج، سكر، ماء، نعناع',             badge: 'العصائر',           is_featured: false },
-  { name_ar: 'كيك شوكولاتة',      name_en: 'Chocolate Cake',  price: 9.99,  cat: 'الكيك',            image_url: null, ingredients: 'دقيق، سكر، كاكاو، بيض، زبدة، حليب',       badge: 'الكيك',             is_featured: true  },
-  { name_ar: 'تشيز كيك',          name_en: 'Cheesecake',      price: 12.99, cat: 'الكيك',            image_url: null, ingredients: 'جبنة كريمية، سكر، بيض، بسكويت، زبدة',     badge: 'الكيك',             is_featured: true  },
-  { name_ar: 'كيك فانيليا',        name_en: 'Vanilla Cake',    price: 11.99, cat: 'الكيك',            image_url: null, ingredients: 'دقيق، سكر، بيض، زبدة، فانيليا، حليب',    badge: 'الكيك',             is_featured: false },
+  { name_ar: 'أمريكانو',          price: 9.99,  cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، ماء ساخن',                      badge: 'القهوة',            is_featured: true  },
+  { name_ar: 'لاتيه',             price: 11.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، حليب مبخر، رغوة حليب',          badge: 'القهوة',            is_featured: true  },
+  { name_ar: 'موكا',              price: 12.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، شوكولاتة، حليب، كريمة',          badge: 'القهوة',            is_featured: false },
+  { name_ar: 'كابتشينو',          price: 10.99, cat: 'القهوة',           image_url: null, ingredients: 'إسبريسو، حليب، رغوة حليب كثيفة',          badge: 'القهوة',            is_featured: true  },
+  { name_ar: 'إسبريسو',           price: 7.99,  cat: 'القهوة',           image_url: null, ingredients: 'قهوة محمصة، ماء',                          badge: 'القهوة',            is_featured: false },
+  { name_ar: 'تركي',              price: 6.99,  cat: 'القهوة',           image_url: null, ingredients: 'قهوة تركية مطحونة، ماء، سكر (اختياري)',   badge: 'القهوة',            is_featured: false },
+  { name_ar: 'موكا بالكراميل',    price: 9.99,  cat: 'المشروبات الباردة', image_url: null, ingredients: 'إسبريسو، شوكولاتة، كراميل، حليب بارد، ثلج', badge: 'المشروبات الباردة', is_featured: true  },
+  { name_ar: 'فرابتشينو',         price: 11.99, cat: 'المشروبات الباردة', image_url: null, ingredients: 'قهوة، حليب، ثلج، سكر، كريمة',              badge: 'المشروبات الباردة', is_featured: true  },
+  { name_ar: 'عصير برتقال',       price: 10.99, cat: 'العصائر',           image_url: null, ingredients: 'برتقال طازج',                              badge: 'العصائر',           is_featured: true  },
+  { name_ar: 'ليموناضة',          price: 7.99,  cat: 'العصائر',           image_url: null, ingredients: 'ليمون طازج، سكر، ماء، نعناع',             badge: 'العصائر',           is_featured: false },
+  { name_ar: 'كيك شوكولاتة',      price: 9.99,  cat: 'الكيك',            image_url: null, ingredients: 'دقيق، سكر، كاكاو، بيض، زبدة، حليب',       badge: 'الكيك',             is_featured: true  },
+  { name_ar: 'تشيز كيك',          price: 12.99, cat: 'الكيك',            image_url: null, ingredients: 'جبنة كريمية، سكر، بيض، بسكويت، زبدة',     badge: 'الكيك',             is_featured: true  },
+  { name_ar: 'كيك فانيليا',        price: 11.99, cat: 'الكيك',            image_url: null, ingredients: 'دقيق، سكر، بيض، زبدة، فانيليا، حليب',    badge: 'الكيك',             is_featured: false },
 ];
 
 const offers = [
@@ -68,9 +68,9 @@ async function seed() {
     for (const p of products) {
       const catId = catIds[p.cat] || null;
       await client.query(
-        `INSERT INTO products (name_ar, name_en, price, category_id, image_url, ingredients, badge, is_featured)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
-        [p.name_ar, p.name_en, p.price, catId, p.image_url, p.ingredients, p.badge, p.is_featured]
+        `INSERT INTO products (name_ar, price, category_id, image_url, ingredients, badge, is_featured) 
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [p.name_ar, p.price, catId, p.image_url, p.ingredients, p.badge, p.is_featured]
       );
     }
     console.log('✅ Products seeded');

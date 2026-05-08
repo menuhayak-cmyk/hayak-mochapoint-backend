@@ -8,8 +8,15 @@ const logger = require('../utils/logger');
 router.post('/', async (req, res) => {
   const { table_number, total_amount, items } = req.body;
 
-  if (!table_number || total_amount === undefined || !items || !Array.isArray(items) || items.length === 0) {
-    return res.status(400).json({ error: 'Missing required order fields or items' });
+  if (!table_number || total_amount === undefined || total_amount === null || isNaN(total_amount) || !items || !Array.isArray(items) || items.length === 0) {
+    return res.status(400).json({ error: 'Missing required order fields or items, or invalid total amount' });
+  }
+
+  // Validate item prices
+  for (const item of items) {
+    if (item.price === undefined || item.price === null || isNaN(item.price)) {
+      return res.status(400).json({ error: `Invalid price for item: ${item.name}` });
+    }
   }
 
   const client = await db.connect();

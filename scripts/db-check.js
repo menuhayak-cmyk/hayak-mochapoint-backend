@@ -65,7 +65,7 @@ async function run() {
     `);
     const prodColNames = prodCols.rows.map(r => r.column_name);
     info(`أعمدة products: ${prodColNames.join(', ')}`);
-    const requiredProdCols = ['id','name_ar','name_en','name_tr','price','category_id','image_url','ingredients','ingredients_tr','badge','badge_tr','is_featured','is_active','sort_order'];
+    const requiredProdCols = ['id','name_ar','name_tr','price','category_id','image_url','ingredients','ingredients_tr','badge','badge_tr','is_featured','is_active','sort_order'];
     for (const col of requiredProdCols) {
       if (!prodColNames.includes(col)) err(`عمود مفقود في products: ${col}`);
     }
@@ -84,6 +84,21 @@ async function run() {
         if (!sizeColNames.includes(col)) err(`عمود مفقود في product_sizes: ${col}`);
       }
       ok('أعمدة product_sizes كاملة');
+    }
+
+    // 4b. Check offers columns
+    if (tables.includes('offers')) {
+      const offersCols = await client.query(`
+        SELECT column_name FROM information_schema.columns
+        WHERE table_name = 'offers' AND table_schema = 'public'
+        ORDER BY ordinal_position
+      `);
+      const offersColNames = offersCols.rows.map(r => r.column_name);
+      info(`أعمدة offers: ${offersColNames.join(', ')}`);
+      for (const col of ['id','image_url','alt_text','alt_text_tr','sort_order','is_active']) {
+        if (!offersColNames.includes(col)) err(`عمود مفقود في offers: ${col}`);
+      }
+      ok('أعمدة offers كاملة');
     }
 
     // 5. Check foreign key constraints
